@@ -1,7 +1,7 @@
 import model from "./model.js";
 
 export const createCourse = (course) => {
-    delete user._id;
+    //delete user._id;
     return model.create(course);
 }
 

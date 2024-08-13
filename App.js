@@ -4,7 +4,7 @@ import Hello from "./hello.js";
 import Lab5 from "./Lab5/index.js";
 import cors from "cors";
 import CourseRoutes from "./Kanbas/Courses/routes.js";
-import ModuleRoutes from "./Kanbas/Modules/routes.js";
+import ModulesRoutes from "./Kanbas/Modules/routes.js";
 import AssignmentRoutes from "./Kanbas/Assignments/routes.js";
 import express from "express";
 import UserRoutes from "./User/routes.js";
@@ -47,7 +47,7 @@ app.use(
 app.use(express.json());
 const port = process.env.PORT || 4000;
 
-ModuleRoutes(app);
+ModulesRoutes(app);
 CourseRoutes(app);
 AssignmentRoutes(app);
 UserRoutes(app);

@@ -38,25 +38,26 @@ export default function CourseRoutes(app) {
 import * as doa from "./dao.js";
 export default function CourseRoutes(app){
     const deleteCourse = async (req,res) => {
-        console.log("Deleting!!!:",req.params._id);
+        //console.log("Deleting!!!:",req.params._id);
         const status = await doa.deleteCourse(req.params._id);
         //const status = await doa.deleteCourse(req.params.CourseID);
         res.json(status);
     };
 
     const createCourse = async (req,res) => {
-        console.log("create course:",req.body);
+        //console.log("create course:",req.body);
         const course = await doa.createCourse(req.body); 
         res.json(course);
     };
 
     const findAllCourses = async (req,res) => {
         const courses = await doa.findAllCourses();
+        console.log("courses:",courses);
         res.json(courses);
         return;
     }
     const updateCourse = async (req,res) => {
-        console.log("Updating",req.body);
+        //console.log("Updating",req.body);
         const {courseId} = req.params;
         const status =await doa.updateCourse(courseId,req.body);
         res.json(status);
