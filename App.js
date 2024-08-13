@@ -40,7 +40,9 @@ if (process.env.NODE_ENV !== "development") {
     };
   }
 */
-const allowedOrigins = [process.env.NETLIFY_URL, 'http://localhost:3000']
+//https://a6--kanbas-react-web-app-2024-su2-nile.netlify.app
+//const allowedOrigins = [process.env.NETLIFY_URL, 'http://localhost:3000']
+const allowedOrigins = ['https://a6--kanbas-react-web-app-2024-su2-nile.netlify.app', 'http://localhost:3000']
 app.use(cors({
     credentials: true,
     origin: (origin, callback) => {
