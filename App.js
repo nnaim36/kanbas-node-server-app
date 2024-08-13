@@ -18,7 +18,7 @@ mongoose.connect(CONNECTION_STRING);
 console.log(process.env.REMOTE_SERVER);
 
 const app = express();
-app.use(
+/*app.use(
     cors({
         credentials: true,
         origin: process.env.NETLIFY_URL || "http://localhost:3000",
@@ -39,6 +39,32 @@ if (process.env.NODE_ENV !== "development") {
       //domain: process.env.NODE_SERVER_DOMAIN,
     };
   }
+*/
+const allowedOrigins = [process.env.NETLIFY_URL, 'http://localhost:3000']
+app.use(cors({
+    credentials: true,
+    origin: (origin, callback) => {
+      if (!origin || allowedOrigins.includes(origin)) {
+        return callback(null, true);
+      } else {
+        const msg = 'The CORS policy for this site does not allow access from the specified Origin.';
+        return callback(new Error(msg), false);
+      }
+    }
+}));
+
+const sessionOptions = {
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false,
+};
+if (process.env.NODE_ENV !== "development") {
+    sessionOptions.proxy = true;
+    sessionOptions.cookie = {
+        sameSite: "none",
+        secure: true,
+    };
+}
   
 app.use(
     session(sessionOptions)
