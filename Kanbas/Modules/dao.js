@@ -1,5 +1,7 @@
 import model from "./model.js";
-export const createModule = (module) => {} // implemented later
+export const createModule = (module) => {
+    return model.create(module);
+}
 export const findAllModules = () => model.find();
 
 export const updateModule = (moduleId, module) =>  model.updateOne({ _id: moduleId }, { $set: module });

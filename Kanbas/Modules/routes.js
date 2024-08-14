@@ -55,7 +55,9 @@ export default function ModulesRoutes(app){
     };
 
     const createModule = async(req,res) => {
+        
         const module = await doa.createModule(req.body);
+        console.log("create module:",module);
         res.json(module);
     };
 
@@ -75,5 +77,5 @@ export default function ModulesRoutes(app){
     app.delete("/api/modules/:_id",deleteModule);
     app.post("/api/modules",createModule);
     app.get("/api/modules",findAllModules);
-    app.put("/api/modules/:courseId",updateModule);
+    app.put("/api/modules/:modleId",updateModule);
 }

@@ -1,19 +1,20 @@
 import mongoose from "mongoose";
 
-const lessonSchema = new mongoose.Schema({
+/*const lessonSchema = new mongoose.Schema({
     id: String,
     name: String,
     description:String,
     module: String
 });
-const userSchema = new mongoose.Schema({
+*/
+const moduleSchema = new mongoose.Schema({
     name:String,
     descriptions:String,
-    course:String,
-    lessons:[lessonSchema],
+    courseid:String,
+    lessons:[],
 
 },
 {collection:"modules"}
 
 );
-export default userSchema;
+export default moduleSchema;
